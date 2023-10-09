@@ -6,5 +6,5 @@
 ! [ -e setup.py ] && echo "SKIP: $PWD/setup.py NOT EXISTS" && exit
 
 ( set -x; bash "${BASH_SOURCE[0]%/*}"/pylint.sh ) || exit
-( set -x; bash "${BASH_SOURCE[0]%/*}"/pylint-django.sh ) || exit
+( set -x; bash "${BASH_SOURCE[0]%/*}"/pylint_django.sh ) || exit
 ( set -x; bash "${BASH_SOURCE[0]%/*}"/pytest.sh ) || exit
