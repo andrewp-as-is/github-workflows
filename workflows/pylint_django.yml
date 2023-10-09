@@ -21,7 +21,7 @@ jobs:
         pip install pylint pylint-django pylint-django-settings
     - name: download .pylintrc
       run: |
-        curl -s -o
+        curl -s https://raw.githubusercontent.com/andrewp-as-is/github-workflows/master/.pylintrc -o .pylintrc
     - name: Analysing the code with pylint
       run: |
         git ls-files '*.py' | xargs pylint
