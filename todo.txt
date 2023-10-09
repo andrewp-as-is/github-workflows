@@ -1,0 +1,7 @@
+pylincrc из dotfiles хуевая идея тк не static copy :)
+----
+github-pylintrc/.pylintrc
+github-workflows/.pylintrc
+---
+а что с settings? все равно ж settings нужны
+django_

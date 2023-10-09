@@ -3,12 +3,8 @@
 
 # usage: init.sh path
 { set -x; cd "$1" || exit; { set +x; } 2>/dev/null; }
+! [ -e setup.py ] && echo "SKIP: $PWD/setup.py NOT EXISTS" && exit
 
-# pylint.yml
-[ -e setup.py ] && [[ -n $(find . -type f -name "*.py" ! -name setup.py) ]] && {
-  ( set -x; /opt/homebrew/bin/rsync --mkpath "${BASH_SOURCE[0]%/*/*}"/workflows/pylint.yml "$PWD"/.github/workflows/pylint.yml ) || exit
-}
-# pytest.yml
-[ -e setup.py ] && [ -e tests ] && [[ -n $(find tests -type f ! -iname ".*") ]] && {
-  ( set -x; /opt/homebrew/bin/rsync --mkpath "${BASH_SOURCE[0]%/*/*}"/workflows/pytest.yml "$PWD"/.github/workflows/pytest.yml ) || exit
-};:
+( set -x; bash "${BASH_SOURCE[0]%/*}"/pylint.sh ) || exit
+( set -x; bash "${BASH_SOURCE[0]%/*}"/pylint-django.sh ) || exit
+( set -x; bash "${BASH_SOURCE[0]%/*}"/pytest.sh ) || exit
